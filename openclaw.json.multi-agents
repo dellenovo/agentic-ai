@@ -176,7 +176,7 @@
         "work": {
           "appId": "<YOUR_FEISHU_APP_ID>",
           "appSecret": "<YOUR_FEISHU_APP_SECRET>",
-          "name": 工作小飞侠",
+          "name": "工作小飞侠",
           "dmPolicy": "allowlist",
           "allowFrom": [
             "ou_d3083671b8808a6da7c1cb3b2df56360",
