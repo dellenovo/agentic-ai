@@ -217,20 +217,32 @@ code: 你复制的code
 请在 ~/projects/agentic-ai 执行 git pull，拉取 financial-automation 最新版本。
 ```
 
-### 7.2 注册 Skill（发给龙虾）
+### 7.2 复制 Skill 目录（发给龙虾）
 
 ```
-请把 financial-expense-automation Skill 注册到 OpenClaw，分三步：
+请将 financial-expense-automation Skill 目录复制到 OpenClaw 的 skills 目录：
 
-第一步：将 Skill 目录复制到 OpenClaw 的 skills 目录：
 cp -r ~/projects/agentic-ai/financial-automation/skills/financial-expense-automation \
   ~/.openclaw/workspace/skills/financial-expense-automation
 
-第二步：在 ~/.openclaw/.env 中添加以下环境变量（文件不存在则新建）：
+完成后确认 ~/.openclaw/workspace/skills/financial-expense-automation/SKILL.md 已存在。
+```
+
+### 7.3 配置环境变量（发给龙虾）
+
+```
+请在 ~/.openclaw/.env 中添加以下环境变量（文件不存在则新建）：
+
 FINANCIAL_AUTOMATION_ROOT=~/projects/agentic-ai/financial-automation
 
-第三步：重载 Skill 配置，然后执行 /skills list，确认列表中出现 financial-expense-automation。
+完成后确认该行已写入文件。
 ```
+
+### 7.4 验证 Skill 是否生效
+
+在飞书 DM 中直接发送一张 PDF 发票（如仓库自带的 `hotel_invoice.pdf`）给龙虾，观察它是否自动触发 `financial-expense-automation` Skill 并走完识别 → 写表的完整链路。
+
+> 这是比 `/skills list` 更直接的验证方式。如果触发成功并完成写表，第 7 步即完成。
 
 ---
 
