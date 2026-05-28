@@ -24,22 +24,21 @@
 在飞书 DM 里发送以下消息：
 
 ```
-请帮我部署 financial-automation 项目。
+请帮我初始化 financial-automation 项目环境。
 
-仓库地址：https://github.com/DjangoPeng/agentic-ai.git
-项目在仓库的 financial-automation/ 子目录。
+仓库已克隆在 ~/projects/agentic-ai，项目在仓库的 financial-automation/ 子目录。
 
 要求：
-1. 克隆完整仓库到 ~/projects/agentic-ai
+1. 在 ~/projects/agentic-ai 执行 git pull，拉取最新代码
 2. 进入 financial-automation/ 子目录
-3. 创建 Python 虚拟环境 .venv
+3. 创建 Python 虚拟环境 .venv（如已存在跳过）
 4. 安装 requirements.txt
-5. 从 .env.example 复制出 .env.local
+5. 从 .env.example 复制出 .env.local（如已存在跳过）
 
 完成后告诉我：
-- 仓库是否克隆成功
+- git pull 是否成功（有无新的提交拉下来）
 - 依赖是否安装成功（特别是 rapidocr_onnxruntime）
-- .env.local 是否已创建
+- .env.local 是否已存在或已创建
 ```
 
 龙虾完成后你会收到确认。
