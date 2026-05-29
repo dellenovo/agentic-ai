@@ -34,6 +34,7 @@
 | 配置心跳巡检与定时任务 | [openclaw-heartbeat/](openclaw-heartbeat) |
 | 开发自定义 Skill（SKILL.md 编写） | [openclaw-skills/](openclaw-skills) |
 | 云端部署小红书自动发布 Agent | [xhs-auto-publisher/](xhs-auto-publisher) |
+| 全自动财务填报与票据识别 Agent | [financial-automation/](financial-automation) |
 
 ## 目录结构
 
@@ -92,7 +93,8 @@
 │
 ├── openclaw-multi-agent/             # 多 Agent 协作与路由调度（即将更新）
 ├── claude-code/                      # Claude Code CLI 深度实战（即将更新）
-└── xhs-auto-publisher/               # 第12节：云端小红书图文自动发布 Agent（Playwright + 龙虾通知）
+├── xhs-auto-publisher/               # 第12节：云端小红书图文自动发布 Agent（Playwright + 龙虾通知）
+└── financial-automation/             # 第13节：全自动财务填报与票据识别 Agent（OCR + 飞书 Bitable）
 ```
 
 ### 📂 [openclaw-infra/](openclaw-infra) — 基础设施
