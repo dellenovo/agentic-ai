@@ -28,8 +28,11 @@ def main() -> None:
     load_env_file(PROJECT_ROOT / ".env")
     config_path = Path(args.config)
     config = load_yaml(config_path)
-    if args.skip_tavily and isinstance(config.get("openclaw_tavily"), dict):
-        config["openclaw_tavily"]["enabled"] = False
+    if args.skip_tavily:
+        if isinstance(config.get("openclaw_tavily"), dict):
+            config["openclaw_tavily"]["enabled"] = False
+        if isinstance(config.get("tavily_search"), dict):
+            config["tavily_search"]["enabled"] = False
     runtime_dir = PROJECT_ROOT / str(config.get("runtime", {}).get("output_dir", "runtime"))
 
     if args.dry_run:
