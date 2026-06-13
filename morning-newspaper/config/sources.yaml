@@ -73,3 +73,12 @@ tavily_search:
       name: AI 创业融资与产品发布
       query: AI startup funding product launch acquisition enterprise software
       domains: [reuters.com, bloomberg.com, cnbc.com, techcrunch.com, theverge.com]
+
+assistant_mailbox:
+  enabled: true
+  host: imap.126.com
+  port: 993
+  user_env: IMAP_USER
+  pass_env: IMAP_PASS
+  folders:
+    - INBOX
