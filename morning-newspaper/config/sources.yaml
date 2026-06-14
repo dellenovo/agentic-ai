@@ -14,8 +14,8 @@ fixed_sources:
     since_days: 3
     min_stars: 80
     per_query_limit: 10
-    languages: [Python, TypeScript, Go, Rust]
-    extra_queries: [topic:ai, topic:agent]
+    languages: [Python, TypeScript, C++, Rust]
+    extra_queries: [topic:ai, topic:agent, topic:embodied-ai]
 
   - id: hackernews_top
     enabled: true
@@ -73,6 +73,20 @@ tavily_search:
       name: AI 创业融资与产品发布
       query: AI startup funding product launch acquisition enterprise software
       domains: [reuters.com, bloomberg.com, cnbc.com, techcrunch.com, theverge.com]
+    - id: embodied_ai_cn
+      name: 具身智能中文新闻追踪
+      query: 具身智能 国内 新闻
+      domains: [news.cn, xinhuanet.com, people.com.cn]
+    - id: embodied_ai_investment_financing
+      name: 具身智能投融资热点
+      query: 具生智能 投融资 热点 分析
+      domains: [36kr.com, pedaily.cn, itjuzi.com]
+    - id: embodied_ai_oversea_research
+      query: Standord University embodied AI research news
+      domains: [techcrunch.com, venturebeat.com, ieee.org]
+    - id: embodied_ai_tycoon
+      query: Tesla Optimus OR Boston Dynamics breakthrough
+      domains: [tesla.com, bostondynamics.com, reuters.com]
 
 assistant_mailbox:
   enabled: true
