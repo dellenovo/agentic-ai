@@ -71,7 +71,21 @@ def main() -> None:
         "count": len(ranking_items),
         "items": ranking_items,
     })
-    write_text(Path(args.prompt_txt), PROMPT_TEXT)
+
+    # Embed candidate items into the prompt
+    items_lines = []
+    for i, item in enumerate(ranking_items, 1):
+        items_lines.append(f"--- 候选 {i} ---")
+        items_lines.append(f"rank_id: {item['rank_id']}")
+        items_lines.append(f"item_id: {item['item_id']}")
+        items_lines.append(f"标题: {item['title']}")
+        items_lines.append(f"中文标题: {item['title_zh']}")
+        items_lines.append(f"摘要: {item['summary_main']}")
+        items_lines.append(f"来源: {item['source_name']} ({item['source_type']})")
+        items_lines.append(f"发布时间: {item['published_at']}")
+        items_lines.append("")
+    filled_prompt = PROMPT_TEXT + "\n\n" + "\n".join(items_lines)
+    write_text(Path(args.prompt_txt), filled_prompt)
     write_text(Path(args.preview_md), _render_preview(ranking_items))
 
     print(f"ranking items={len(ranking_items)}")
