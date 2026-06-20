@@ -61,8 +61,11 @@ def main() -> int:
             '',
             f'失败步骤：{status.get("step", "quality") or "quality"}',
             f'错误摘要：{status.get("error_summary", "未知错误") or "未知错误"}',
-            f'当前页面：{"可访问旧版" if dashboard_exists else "页面不可用"}',
-            '需要人工处理：请检查 collect / shortlist / draft / ranking / build_dashboard / quality 日志与产物。',
+            f'当前页面：{"可访问旧版版" if dashboard_exists else "不可用"}',
+            '需要人工处理：',
+            f'  1. 查看 runtime/ 下对应步骤的日志文件',
+            '  2. 修复问题后重跑：cd ~/projects/morning-newspaper && python3 scripts/cron_auto_pipeline.py',
+            f'  3. 如需手动推送，使用 runtime/cron_delivery_message.txt（成功消息已缓存时不适用）',
         ]
 
     RUNTIME.mkdir(parents=True, exist_ok=True)

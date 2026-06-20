@@ -71,7 +71,14 @@ def main() -> None:
         "count": len(candidates),
         "titles": candidates,
     })
-    write_text(Path(args.prompt_txt), PROMPT_TEXT)
+
+    # Embed candidate titles into the prompt text so the LLM can rank them
+    title_lines = "\n".join(
+        f"{i+1}. {c['title']}  [{c['source_type']}]"
+        for i, c in enumerate(candidates)
+    )
+    filled_prompt = PROMPT_TEXT + f"\n\n候选标题列表：\n{title_lines}\n"
+    write_text(Path(args.prompt_txt), filled_prompt)
     write_text(Path(args.preview_md), _render_preview(candidates))
 
     print(f"title candidates={len(candidates)}")

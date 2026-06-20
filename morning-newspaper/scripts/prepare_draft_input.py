@@ -74,7 +74,19 @@ def main() -> None:
         "body_limit": args.body_limit,
         "items": draft_items,
     })
-    write_text(Path(args.prompt_txt), PROMPT_TEXT)
+
+    # Embed draft items into the prompt text so the LLM can generate actual drafts
+    items_lines = []
+    for i, item in enumerate(draft_items, 1):
+        items_lines.append(f"--- 候选 {i} ---")
+        items_lines.append(f"标题: {item['title']}")
+        items_lines.append(f"来源: {item['source_name']} ({item['source_type']})")
+        items_lines.append(f"发布时间: {item['published_at']}")
+        items_lines.append(f"链接: {item['url']}")
+        items_lines.append(f"正文摘要:\n{item['model_input_text']}")
+        items_lines.append("")
+    filled_prompt = PROMPT_TEXT + "\n" + "\n".join(items_lines)
+    write_text(Path(args.prompt_txt), filled_prompt)
     write_text(Path(args.preview_md), _render_preview(draft_items))
 
     print(f"draft input items={len(draft_items)}")
