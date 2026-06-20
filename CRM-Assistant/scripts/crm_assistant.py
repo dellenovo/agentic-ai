@@ -1423,31 +1423,15 @@ def sync_crm_packet_to_feishu(
         report["customer_response"] = customer_responses[0] if len(customer_responses) == 1 else customer_responses
         report["customer_responses"] = customer_responses
 
-        existing_opportunity_records = list_feishu_bitable_records(resolved_app_token, str(resolved_opportunity_table_id), access_token)
-        existing_opportunity_record = find_feishu_record_by_opportunity_identity(
-            existing_opportunity_records,
-            opportunity_row.get("商机ID"),
-            opportunity_row.get("机会名称"),
-            opportunity_row.get("客户公司"),
-        )
+        # 商机快照表：始终追加，不查重。同一机会每次会议生成一条独立快照行。
         coerced_opportunity_row = coerce_row_for_bitable(opportunity_row, opportunity_fields_meta)
-        if existing_opportunity_record is None:
-            opportunity_response = batch_create_feishu_bitable_records(
-                resolved_app_token,
-                str(resolved_opportunity_table_id),
-                [{"fields": coerced_opportunity_row}],
-                access_token,
-            )
-            report["opportunity_action"] = "created"
-        else:
-            opportunity_response = batch_update_feishu_bitable_records(
-                resolved_app_token,
-                str(resolved_opportunity_table_id),
-                [{"record_id": existing_opportunity_record["record_id"], "fields": coerced_opportunity_row}],
-                access_token,
-            )
-            report["opportunity_action"] = "updated"
-            report["opportunity_record_id"] = existing_opportunity_record.get("record_id")
+        opportunity_response = batch_create_feishu_bitable_records(
+            resolved_app_token,
+            str(resolved_opportunity_table_id),
+            [{"fields": coerced_opportunity_row}],
+            access_token,
+        )
+        report["opportunity_action"] = "appended"
         report["opportunity_row_fields"] = coerced_opportunity_row
         report["opportunity_response"] = opportunity_response
 
