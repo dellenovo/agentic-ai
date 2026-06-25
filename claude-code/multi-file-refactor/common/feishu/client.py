@@ -360,3 +360,93 @@ class FeishuClient:
     def build_attachment_field_value(file_tokens: list[str]) -> list[dict[str, str]]:
         """Build Bitable attachment field value from file tokens."""
         return [{"file_token": token} for token in file_tokens if str(token).strip()]
+
+    #
+    # IM Message Sending
+    #
+
+    def _upload_im_image(self, image_path: str | Path) -> str:
+        """Upload an image via Feishu IM API, return image_key."""
+        import json as _json
+
+        path = Path(image_path)
+        if not path.exists():
+            raise FeishuApiError(f"IM image file does not exist: {path}")
+
+        mime_type = mimetypes.guess_type(path.name)[0] or "image/png"
+        response = post_multipart(
+            f"{self.endpoint}/open-apis/im/v1/images",
+            fields={"image_type": "message"},
+            file_field_name="image",
+            file_name=path.name,
+            file_bytes=path.read_bytes(),
+            content_type=mime_type,
+            headers=self._get_headers(),
+        )
+        data = response.get("data", {}) if isinstance(response, dict) else {}
+        image_key = str(data.get("image_key") or "")
+        if not image_key:
+            raise FeishuApiError(
+                f"Feishu did not return image_key for uploaded image: {_json.dumps(response)}"
+            )
+        return image_key
+
+    def _send_im_message(
+        self,
+        receive_id: str,
+        receive_id_type: str,
+        msg_type: str,
+        content: dict[str, Any],
+    ) -> dict[str, Any]:
+        """Send a message via Feishu IM API."""
+        import json as _json
+
+        return self._api_request(
+            path="/open-apis/im/v1/messages",
+            method="POST",
+            query={"receive_id_type": receive_id_type},
+            body={
+                "receive_id": receive_id,
+                "msg_type": msg_type,
+                "content": _json.dumps(content, ensure_ascii=False),
+            },
+        )
+
+    def send_im_image(
+        self,
+        chat_id: str,
+        image_path: str | Path,
+        *,
+        receive_id_type: str = "chat_id",
+    ) -> dict[str, Any]:
+        """Upload an image and send it as an image message to a Feishu chat.
+
+        Two-step: upload image via IM API to get image_key, then send image message.
+
+        Returns the send-message API response.
+        """
+        image_key = self._upload_im_image(image_path)
+        return self._send_im_message(
+            receive_id=chat_id,
+            receive_id_type=receive_id_type,
+            msg_type="image",
+            content={"image_key": image_key},
+        )
+
+    def send_im_text(
+        self,
+        chat_id: str,
+        text: str,
+        *,
+        receive_id_type: str = "chat_id",
+    ) -> dict[str, Any]:
+        """Send a plain text message to a Feishu chat.
+
+        Returns the send-message API response.
+        """
+        return self._send_im_message(
+            receive_id=chat_id,
+            receive_id_type=receive_id_type,
+            msg_type="text",
+            content={"text": text},
+        )
