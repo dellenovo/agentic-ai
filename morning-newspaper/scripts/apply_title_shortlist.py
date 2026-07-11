@@ -48,7 +48,16 @@ def main() -> None:
     if not isinstance(items, list) or not isinstance(ranked_titles, list):
         raise SystemExit("invalid input format")
 
-    selected_map = {str(t).strip(): idx for idx, t in enumerate(ranked_titles, 1) if str(t).strip()}
+    import re
+    selected_map: dict[str, int] = {}
+    for idx, t in enumerate(ranked_titles, 1):
+        raw = str(t).strip()
+        if not raw:
+            continue
+        # Strip trailing [source_tag] suffix if present
+        clean = re.sub(r'\s*\[.+?\]\s*$', '', raw).strip()
+        selected_map[clean] = idx
+        selected_map[raw] = idx  # also keep original for strict matches
 
     shortlist: List[Dict[str, Any]] = []
     seen_titles: set[str] = set()

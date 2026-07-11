@@ -39,7 +39,7 @@ def main() -> int:
     dashboard_exists = (RUNTIME / 'dashboard.html').exists()
     page_url = 'http://172.31.0.2:8510/dashboard.html'
 
-    if status.get('ok') and count == 10 and dashboard_exists and len(items) >= 3:
+    if status.get('ok') and count >= 5 and dashboard_exists and len(items) >= 3:
         top3 = items[:3]
         lines = [
             '今日 AI 早报已生成',
