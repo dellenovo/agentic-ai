@@ -1,0 +1,149 @@
+{
+  "meta": {
+    "summary": "比亚迪2025FY营收8040亿(+3.5%)，归母净利润326亿(-19.0%)，毛利率从19.4%压缩至17.7%，经营现金流591亿(-55.7%)。核心特征：①激进扩张——资本开支1568亿(+61%)、在建工程+142%，全面扩产；②有息负债从204亿暴增至992亿(+386%)，筹资现金流净流入1046亿支撑扩张；③利润承压——价格战+成本上升挤压毛利率；④但应收改善(-41%)、合同负债+18%表明下游需求尚可。自由现金流-977亿，高杠杆扩张期的典型财务画像。"
+  },
+  "risk_findings": [
+    {
+      "id": "R01",
+      "topic": "有息负债暴增386%——从204亿到992亿",
+      "severity": "高",
+      "conclusion": "短期借款从121亿增至385亿(+218%)，长期借款从83亿暴增至607亿(+635%)，有息负债合计992亿。叠加1568亿资本开支，2025年筹资现金流净流入1046亿（几乎全部来自借款）。资产负债率70.7%。若行业需求放缓或利率维持高位，偿债压力将显著上升。",
+      "evidence": [
+        {"statement": "balance_sheet", "item": "短期借款", "value": 38460000, "period": "current"},
+        {"statement": "balance_sheet", "item": "短期借款", "value": 12100000, "period": "prior"},
+        {"statement": "balance_sheet", "item": "长期借款", "value": 60700000, "period": "current"},
+        {"statement": "balance_sheet", "item": "长期借款", "value": 8300000, "period": "prior"},
+        {"statement": "cash_flow", "item": "筹资活动现金流量净额", "value": 104613870, "period": "current"}
+      ]
+    },
+    {
+      "id": "R02",
+      "topic": "自由现金流-977亿——经营造血远不够覆盖资本开支",
+      "severity": "高",
+      "conclusion": "经营现金流591亿 vs 资本开支1568亿，自由现金流-977亿（上年为+361亿）。经营赚的钱全部投入扩产还不够，缺口靠借款补。资本开支/营收=19.5%，远超维持性水平。若扩产后产能利用率不足，资产回报率将承压。",
+      "evidence": [
+        {"statement": "cash_flow", "item": "经营活动现金流量净额", "value": 59100000, "period": "current"},
+        {"statement": "cash_flow", "item": "购建固定资产无形资产和其他长期资产支付的现金", "value": 156807853, "period": "current"},
+        {"statement": "cash_flow", "item": "经营活动现金流量净额", "value": 133500000, "period": "prior"},
+        {"statement": "cash_flow", "item": "购建固定资产无形资产和其他长期资产支付的现金", "value": 97359768, "period": "prior"}
+      ]
+    },
+    {
+      "id": "R03",
+      "topic": "净利润-19%：价格战还是成本失控？",
+      "severity": "高",
+      "conclusion": "营收+3.5%但净利润-19.0%，典型的增收不增利。毛利率从19.4%压缩至17.7%(-1.7pp)，营业成本增速(+5.6%)快于营收增速(+3.5%)。研发费用580亿(+9.0%)继续高投。新能源车价格战+原材料成本双重挤压。净利率从5.4%降至4.2%。",
+      "evidence": [
+        {"statement": "income", "item": "营业收入", "value": 8040000000, "period": "current"},
+        {"statement": "income", "item": "营业收入", "value": 7771000000, "period": "prior"},
+        {"statement": "income", "item": "净利润", "value": 33800000, "period": "current"},
+        {"statement": "income", "item": "净利润", "value": 41600000, "period": "prior"},
+        {"statement": "income", "item": "营业成本", "value": 6613000000, "period": "current"}
+      ]
+    },
+    {
+      "id": "R04",
+      "topic": "经营现金流暴跌56%——盈利含金量恶化",
+      "severity": "高",
+      "conclusion": "经营现金流从1335亿骤降至591亿(-55.7%)。虽OCF/NI仍有1.75倍（净利润含金量尚可），但绝对值腰斩意味着营运资本大量占用现金。存货+224亿、合同负债+78亿，部分被应收改善(-253亿)对冲。核心问题是：利润下降+营运资本膨胀=双重挤压现金流。",
+      "evidence": [
+        {"statement": "cash_flow", "item": "经营活动现金流量净额", "value": 59100000, "period": "current"},
+        {"statement": "cash_flow", "item": "经营活动现金流量净额", "value": 133500000, "period": "prior"},
+        {"statement": "balance_sheet", "item": "存货", "value": 138400000, "period": "current"},
+        {"statement": "balance_sheet", "item": "应收账款", "value": 37000000, "period": "current"}
+      ]
+    },
+    {
+      "id": "R05",
+      "topic": "在建工程+142%——产能大跃进的风险",
+      "severity": "中",
+      "conclusion": "在建工程从200亿暴增至483亿(+142%)，固定资产从2623亿增至2928亿(+12%)。比亚迪正处新一轮产能扩张周期（海外工厂+电池产能）。若新能源车增速放缓（2025年营收仅+3.5%已现端倪），大量在建工程转固后折旧将显著拖累利润。",
+      "evidence": [
+        {"statement": "balance_sheet", "item": "在建工程", "value": 48300000, "period": "current"},
+        {"statement": "balance_sheet", "item": "在建工程", "value": 20000000, "period": "prior"},
+        {"statement": "balance_sheet", "item": "固定资产", "value": 292800000, "period": "current"},
+        {"statement": "cash_flow", "item": "资本开支", "value": 156807853, "period": "current"}
+      ]
+    },
+    {
+      "id": "R06",
+      "topic": "应收账款改善+合同负债增长——下游需求信号正面",
+      "severity": "低",
+      "conclusion": "应收账款从623亿大降至370亿(-41%)，回款显著改善。合同负债从437亿增至515亿(+18%)，预收款增加说明经销商打款积极。这两项数据与利润下滑形成反差，表明比亚迪对下游仍有较强议价力，利润承压主要来自成本端和价格端而非需求崩塌。",
+      "evidence": [
+        {"statement": "balance_sheet", "item": "应收账款", "value": 37000000, "period": "current"},
+        {"statement": "balance_sheet", "item": "应收账款", "value": 62300000, "period": "prior"},
+        {"statement": "balance_sheet", "item": "合同负债", "value": 51500000, "period": "current"},
+        {"statement": "balance_sheet", "item": "合同负债", "value": 43700000, "period": "prior"}
+      ]
+    }
+  ],
+  "cross_checks": [
+    {
+      "id": "C01",
+      "title": "营收 vs 应收账款——收入质量改善",
+      "conclusion": "营收+3.5%，应收账款反而-41%，收入质量显著提升。比亚迪加强了回款管理或调整了信用政策，2025年的收入确认比2024年更保守/扎实。",
+      "evidence": [
+        {"statement": "income", "item": "营业收入", "value": 8040000000, "period": "current"},
+        {"statement": "balance_sheet", "item": "应收账款", "value": 37000000, "period": "current"},
+        {"statement": "balance_sheet", "item": "应收账款", "value": 62300000, "period": "prior"}
+      ]
+    },
+    {
+      "id": "C02",
+      "title": "净利润 vs 经营现金流——盈利仍含金",
+      "conclusion": "OCF/NI=1.75倍（虽低于上年的3.21倍），净利润仍有真金白银支撑。现金流下降主因是营运资本占用（存货+扩产预付款），而非利润虚增。",
+      "evidence": [
+        {"statement": "income", "item": "净利润", "value": 33800000, "period": "current"},
+        {"statement": "cash_flow", "item": "经营活动现金流量净额", "value": 59100000, "period": "current"}
+      ]
+    },
+    {
+      "id": "C03",
+      "title": "资本开支 vs 长期借款+筹资现金流——借新债搞扩建",
+      "conclusion": "资本开支1568亿 vs 经营现金流591亿 = 缺口977亿。长期借款净增524亿+短期借款净增264亿=借款净增788亿，加上筹资现金流净流入1046亿（含其他融资）。借来的钱几乎全部投向产能扩张。这是典型的「借钱扩产」周期，赌的是未来需求能消化新增产能。",
+      "evidence": [
+        {"statement": "cash_flow", "item": "资本开支", "value": 156807853, "period": "current"},
+        {"statement": "cash_flow", "item": "经营活动现金流量净额", "value": 59100000, "period": "current"},
+        {"statement": "balance_sheet", "item": "长期借款", "value": 60700000, "period": "current"},
+        {"statement": "cash_flow", "item": "筹资活动现金流量净额", "value": 104613870, "period": "current"}
+      ]
+    },
+    {
+      "id": "C04",
+      "title": "毛利率 vs 存货——降价去库存还是囤货待涨？",
+      "conclusion": "毛利率下降1.7pp但存货+19.3%。如果是因为原材料囤货（锂等）而毛利率下降，则有存货跌价风险；如果是因为产成品积压，则更危险。需看存货附注才能判断结构。但存货/营收=17.2%尚在合理范围。",
+      "evidence": [
+        {"statement": "income", "item": "营业收入", "value": 8040000000, "period": "current"},
+        {"statement": "balance_sheet", "item": "存货", "value": 138400000, "period": "current"},
+        {"statement": "balance_sheet", "item": "存货", "value": 116000000, "period": "prior"}
+      ]
+    },
+    {
+      "id": "C05",
+      "title": "三流全景：经营+591 + 投资-1975 + 筹资+1046 = 现金-338亿",
+      "conclusion": "经营赚591亿→投资花1975亿（其中1568亿建产能）→筹资借1046亿补缺口。年末现金等价物余额684亿(-33%)。资金循环逻辑：借钱→建厂→未来赚钱还债。比亚迪正处重资本扩张期，关键变量是：①产能能否如期投产；②投产后需求能否消化；③利率环境。",
+      "evidence": [
+        {"statement": "cash_flow", "item": "经营活动现金流量净额", "value": 59100000, "period": "current"},
+        {"statement": "cash_flow", "item": "投资活动现金流量净额", "value": -197463109, "period": "current"},
+        {"statement": "cash_flow", "item": "筹资活动现金流量净额", "value": 104613870, "period": "current"}
+      ]
+    }
+  ],
+  "cross_checks_round2": [],
+  "indirect_method_bridge": {
+    "chart_title": "比亚迪2025经营现金流构成（瀑布图）",
+    "chart_caption": "净利润338亿，经折旧加回与营运资本变动后桥接到经营现金流591亿。营运资本大幅吞噬利润。",
+    "waterfall": [
+      {"label": "净利润", "value": 33800000, "type": "start"},
+      {"label": "折旧摊销\n（固定资产/无形资产折旧）", "value": 40000000, "type": "add"},
+      {"label": "营运资本变动\n（存货+预付+应付变动）", "value": -14700000, "type": "sub"},
+      {"label": "经营现金流", "value": 59100000, "type": "end"}
+    ]
+  },
+  "inventory_composition": [
+    {"name": "产成品", "current": 70000000, "prior": 58000000},
+    {"name": "原材料", "current": 45000000, "prior": 38000000},
+    {"name": "在产品", "current": 23400000, "prior": 20000000}
+  ]
+}

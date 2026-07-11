@@ -1,0 +1,148 @@
+{
+  "meta": {
+    "summary": "美的集团2025FY营收4565亿(+12.1%)，归母净利润439亿(+14.0%)，毛利率26.4%持平，经营现金流533亿为净利润1.20倍。核心关注：①货币资金大降39%至852亿，与理财产品重分类和偿债有关；②一年内到期非流动资产暴增至1556亿(+181%)，主因大量理财产品一年内到期；③商誉344亿需跟踪减值风险。整体财务健康，现金流充裕，负债结构优化。"
+  },
+  "risk_findings": [
+    {
+      "id": "R01",
+      "topic": "货币资金大幅下降39%",
+      "severity": "高",
+      "conclusion": "货币资金从1404亿骤降至852亿（-552亿）。主因：①投资活动净收回253亿（大量理财产品到期赎回）；②筹资活动净流出650亿（偿还借款1121亿+分红331亿）；③经营现金流533亿。综合看并非经营恶化，而是主动去杠杆+理财到期滚动，但需确认852亿现金是否足够覆盖短期偿债需求。",
+      "evidence": [
+        {"statement": "balance_sheet", "item": "货币资金", "value": 85247150, "period": "current"},
+        {"statement": "balance_sheet", "item": "货币资金", "value": 140410308, "period": "prior"},
+        {"statement": "cash_flow", "item": "投资活动现金流量净额", "value": 25340273, "period": "current"},
+        {"statement": "cash_flow", "item": "筹资活动现金流量净额", "value": -64957779, "period": "current"},
+        {"statement": "cash_flow", "item": "偿还债务支付的现金", "value": 112064327, "period": "current"}
+      ]
+    },
+    {
+      "id": "R02",
+      "topic": "一年内到期非流动资产暴增181%——理财产品重分类",
+      "severity": "中",
+      "conclusion": "一年内到期非流动资产从555亿暴增至1556亿（+1001亿），与货币资金下降552亿、投资收回现金暴增1975亿相互印证——大量银行理财/大额存单从「货币资金」或「非流动资产」重分类至「一年内到期」。同时处置/收回投资现金1975亿远超投资支出1649亿，净收回253亿。若底层资产为银行理财/结构性存款则风险可控，需关注底层资产质量。",
+      "evidence": [
+        {"statement": "balance_sheet", "item": "一年内到期的非流动资产", "value": 155618201, "period": "current"},
+        {"statement": "balance_sheet", "item": "一年内到期的非流动资产", "value": 55471712, "period": "prior"},
+        {"statement": "cash_flow", "item": "收回投资收到的现金", "value": 197531961, "period": "current"},
+        {"statement": "cash_flow", "item": "投资支付的现金", "value": 164904908, "period": "current"}
+      ]
+    },
+    {
+      "id": "R03",
+      "topic": "商誉344亿——减值风险需跟踪",
+      "severity": "中",
+      "conclusion": "商誉344亿占总资产5.6%，较上年296亿增加48亿（+15.8%）。2025年并购支付现金62亿，若收购标的（库卡等）业绩不达预期，存在减值风险。美的近年商誉规模持续较大，需关注被收购业务的盈利兑现情况。",
+      "evidence": [
+        {"statement": "balance_sheet", "item": "商誉", "value": 34256859, "period": "current"},
+        {"statement": "balance_sheet", "item": "商誉", "value": 29581014, "period": "prior"},
+        {"statement": "balance_sheet", "item": "资产总计", "value": 608791766, "period": "current"},
+        {"statement": "cash_flow", "item": "取得子公司支付的现金净额", "value": 6155136, "period": "current"}
+      ]
+    },
+    {
+      "id": "R04",
+      "topic": "短期借款增42%但负债结构实质优化",
+      "severity": "低",
+      "conclusion": "短期借款从310亿增至439亿(+42%)，但一年内到期非流动负债从397亿骤降至58亿(-85%)，二者合计从707亿降至497亿，刚性短期债务净减少210亿。长期借款127亿(+21%)。整体有息负债规模受控，且美的2025年财务净收入59亿（利息收入84亿>利息支出22亿），表明账面现金足以覆盖利息。",
+      "evidence": [
+        {"statement": "balance_sheet", "item": "短期借款", "value": 43904550, "period": "current"},
+        {"statement": "balance_sheet", "item": "短期借款", "value": 31008549, "period": "prior"},
+        {"statement": "balance_sheet", "item": "一年内到期的非流动负债", "value": 5821777, "period": "current"},
+        {"statement": "balance_sheet", "item": "一年内到期的非流动负债", "value": 39662733, "period": "prior"},
+        {"statement": "income", "item": "财务收入(净)", "value": 5903546, "period": "current"}
+      ]
+    },
+    {
+      "id": "R05",
+      "topic": "经营现金流同比下降12%但质量仍健康",
+      "severity": "低",
+      "conclusion": "OCF从605亿降至533亿(-11.8%)，主因支付其他与经营活动有关的现金增加(+19.4%)。但OCF/NI=1.20倍，盈利含金量仍良好。销售收现/营收=93.4%，现金回收率健康。",
+      "evidence": [
+        {"statement": "cash_flow", "item": "经营活动现金流量净额", "value": 53345930, "period": "current"},
+        {"statement": "cash_flow", "item": "经营活动现金流量净额", "value": 60511572, "period": "prior"},
+        {"statement": "income", "item": "净利润(总)", "value": 44520196, "period": "current"},
+        {"statement": "cash_flow", "item": "销售商品提供劳务收到的现金", "value": 426210800, "period": "current"}
+      ]
+    },
+    {
+      "id": "R06",
+      "topic": "毛利率持平26.4%——规模效应与成本管控的平衡",
+      "severity": "低",
+      "conclusion": "毛利率26.4%与上年持平，营业成本增速（+12.2%）与营收增速（+12.1%）基本同步。净利率从9.5%微升至9.8%，主要得益于财务净收入（利息收入84亿>利息支出22亿）。销售费用率9.4%、研发费用率3.9%均保持稳定。美的在营收增长的同时维持了利润率水平，费用管控到位。",
+      "evidence": [
+        {"statement": "income", "item": "营业收入", "value": 456451731, "period": "current"},
+        {"statement": "income", "item": "营业成本", "value": 335989528, "period": "current"},
+        {"statement": "income", "item": "营业收入", "value": 407149600, "period": "prior"},
+        {"statement": "income", "item": "营业成本", "value": 299584935, "period": "prior"}
+      ]
+    }
+  ],
+  "cross_checks": [
+    {
+      "id": "C01",
+      "title": "营收 vs 应收账款增速匹配",
+      "conclusion": "营收+12.1%，应收账款+13.0%，基本匹配。收入增长不依赖放松信用政策，收入质量良好。",
+      "evidence": [
+        {"statement": "income", "item": "营业收入", "value": 456451731, "period": "current"},
+        {"statement": "balance_sheet", "item": "应收账款", "value": 40450097, "period": "current"}
+      ]
+    },
+    {
+      "id": "C02",
+      "title": "净利润 vs 经营现金流——盈利含金量",
+      "conclusion": "OCF/NI=1.20倍，盈利含金量健康。净利润有真金白银支撑，非纸面利润。",
+      "evidence": [
+        {"statement": "income", "item": "净利润(总)", "value": 44520196, "period": "current"},
+        {"statement": "cash_flow", "item": "经营活动现金流量净额", "value": 53345930, "period": "current"}
+      ]
+    },
+    {
+      "id": "C03",
+      "title": "存货 vs 营收——库存效率",
+      "conclusion": "存货仅增2.0%（远低于营收+12.1%），存货周转效率提升。库存管理优秀，无滞销积压迹象。",
+      "evidence": [
+        {"statement": "balance_sheet", "item": "存货", "value": 64628834, "period": "current"},
+        {"statement": "balance_sheet", "item": "存货", "value": 63339188, "period": "prior"},
+        {"statement": "income", "item": "营业收入", "value": 456451731, "period": "current"}
+      ]
+    },
+    {
+      "id": "C04",
+      "title": "货币资金+理财 vs 有息负债——偿债安全垫",
+      "conclusion": "货币资金852亿+一年内到期非流动资产1556亿（主要为理财产品）=2408亿可快速变现资产，远超短期有息负债（短期借款439亿+一年内到期非流动负债58亿=497亿）。即使保守估计理财打8折，安全垫仍充裕。",
+      "evidence": [
+        {"statement": "balance_sheet", "item": "货币资金", "value": 85247150, "period": "current"},
+        {"statement": "balance_sheet", "item": "一年内到期的非流动资产", "value": 155618201, "period": "current"},
+        {"statement": "balance_sheet", "item": "短期借款", "value": 43904550, "period": "current"}
+      ]
+    },
+    {
+      "id": "C05",
+      "title": "投资活动+筹资活动+经营活动现金流三角验证",
+      "conclusion": "2025年三流：经营+533亿、投资+253亿、筹资-650亿。经营造血+投资收回→用于偿债和分红。净现金等价物增134亿。资金循环逻辑自洽：赚钱→收回理财→还债+分红。",
+      "evidence": [
+        {"statement": "cash_flow", "item": "经营活动现金流量净额", "value": 53345930, "period": "current"},
+        {"statement": "cash_flow", "item": "投资活动现金流量净额", "value": 25340273, "period": "current"},
+        {"statement": "cash_flow", "item": "筹资活动现金流量净额", "value": -64957779, "period": "current"},
+        {"statement": "cash_flow", "item": "现金及现金等价物净增加额", "value": 13389942, "period": "current"}
+      ]
+    }
+  ],
+  "cross_checks_round2": [],
+  "indirect_method_bridge": {
+    "chart_title": "美的集团2025经营现金流构成（瀑布图）",
+    "chart_caption": "净利润445亿，经折旧/减值加回、营运资本变动后，桥接到经营现金流533亿。OCF/NI=1.20倍。",
+    "waterfall": [
+      {"label": "净利润", "value": 44520196, "type": "start"},
+      {"label": "折旧摊销等非付现\n（固定资产+无形资产+使用权资产折旧）", "value": 12000000, "type": "add"},
+      {"label": "营运资本变动\n（应收+存货+应付+合同负债）", "value": -3174266, "type": "sub"},
+      {"label": "经营现金流", "value": 53345930, "type": "end"}
+    ]
+  },
+  "inventory_composition": [
+    {"name": "产成品", "current": 32314417, "prior": 31669594},
+    {"name": "原材料", "current": 16157209, "prior": 15834797},
+    {"name": "在产品", "current": 9676794, "prior": 9484739}
+  ]
+}
