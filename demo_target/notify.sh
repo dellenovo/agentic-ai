@@ -1,4 +1,8 @@
 #!/usr/bin/env bash
-# ⚠️ 演示用假 webhook（非真实）—— 硬编码飞书 webhook，供巡检演示
-FEISHU_WEBHOOK="https://open.feishu.cn/open-apis/bot/v2/hook/FAKE-0000-demo-do-not-use"
-curl -s -X POST "$FEISHU_WEBHOOK" -d '{"msg":"demo"}'
+# 从环境变量读取飞书 webhook，未设置时跳过发送
+FEISHU_WEBHOOK="${FEISHU_WEBHOOK:-}"
+if [ -n "$FEISHU_WEBHOOK" ]; then
+  curl -s -X POST "$FEISHU_WEBHOOK" -d '{"msg":"demo"}'
+else
+  echo "FEISHU_WEBHOOK not set, skipping notification" >&2
+fi
