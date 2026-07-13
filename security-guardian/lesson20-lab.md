@@ -96,9 +96,9 @@ export CLAUDE_CODE_COMMAND="你的 Claude Code 非交互调用命令，例如 cl
 请启动 Security Guardian。
 
 执行（后台常驻，别让服务占住当前会话）：
-cd /root/projects/agentic-ai/security-guardian
+cd /root/T01_code/lifei-agentic-ai/security-guardian
 chmod +x run_dashboard.sh
-OPENCLAW_ROOT=/root/.openclaw CLAUDE_CODE_TIMEOUT=300 nohup ./run_dashboard.sh > /tmp/sg-8511.log 2>&1 &
+OPENCLAW_ROOT=/root/sg-sample/.openclaw CLAUDE_CODE_TIMEOUT=300 nohup ./run_dashboard.sh > /tmp/sg-8511.log 2>&1 &
 sleep 2 && curl -s http://127.0.0.1:8511/api/status >/dev/null && echo "面板已就绪：监听 0.0.0.0:8511"
 echo "面板地址：http://$(curl -4 -s --max-time 5 ifconfig.me || curl -4 -s --max-time 5 ipinfo.io/ip):8511/dashboard.html"
 
@@ -157,8 +157,8 @@ EOF
 执行（后台发起 + 轮询报告）：
 curl -s -X POST http://127.0.0.1:8511/claude-code/analyze-cloud -o /tmp/sg-analyze.json &
 for i in $(seq 1 60); do
-  RUN=$(ls -t /root/projects/agentic-ai/security-guardian/openclaw_security_console/runtime/audit_runs 2>/dev/null | head -1)
-  RD=/root/projects/agentic-ai/security-guardian/openclaw_security_console/runtime/audit_runs/$RUN
+  RUN=$(ls -t /root/T01_code/lifei-agentic-ai/security-guardian/openclaw_security_console/runtime/audit_runs 2>/dev/null | head -1)
+  RD=/root/T01_code/lifei-agentic-ai/security-guardian/openclaw_security_console/runtime/audit_runs/$RUN
   [ -f "$RD/report.json" ] && { echo "✅ 出报告 run=$RUN"; break; }
   echo "⏳ 还在跑…（$i）"; sleep 10
 done
